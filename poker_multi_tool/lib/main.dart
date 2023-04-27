@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:poker_multi_tool/admob.dart';
+import 'package:poker_multi_tool/chart.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,8 +50,26 @@ class Home extends StatelessWidget {
     )..load();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Admob'),
+      body: Row(
+        children: [
+          NavigationRail(
+            destinations: const [
+              NavigationRailDestination(
+                icon: Icon(Icons.show_chart),
+                label: Text("chart"),
+              ),
+              NavigationRailDestination(
+                icon: Icon(Icons.abc),
+                label: Text("abc"),
+              )
+            ],
+            selectedIndex: 0,
+            labelType: NavigationRailLabelType.all,
+            unselectedLabelTextStyle: const TextStyle(color: Colors.black),
+            selectedLabelTextStyle: const TextStyle(color: Colors.blue),
+          ),
+          const ChartPage()
+        ],
       ),
       bottomNavigationBar: SizedBox(
         height: 50,
